@@ -1,4 +1,5 @@
 #include "csapp.h"
+#include "shell.h"
 void parser(char *command, char *argv[], int *status)
 {
     int last = 0;
@@ -19,8 +20,8 @@ void parser(char *command, char *argv[], int *status)
         last++;
         beginOfArgv = tempArgv;
     }
-
-    if (isInCommand(argv[0]) != NULL) //默认后台执行
+    char *sd = isInCommand(argv[0]);
+    if (isInCommand(argv[0])) //默认后台执行
     {
         *status = *status | 1;
         *status = *status << 1;
